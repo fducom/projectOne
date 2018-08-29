@@ -7,7 +7,7 @@ const dishSchema = new Schema({
     completed: Boolean,
     price: Number,
     description:String, //Customer specifications
-    });
+});
 
 const Dish = mongoose.model('Person', dishSchema);
 
