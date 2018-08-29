@@ -11,3 +11,5 @@ module.exports ={
     Order: Order,
     Dish: Dish
 }
+
+module.exports.User = require('./user')

@@ -9,6 +9,6 @@ const dishSchema = new Schema({
     description:String, //Customer specifications
 });
 
-const Dish = mongoose.model('Person', dishSchema);
+const Dish = mongoose.model('Dish', dishSchema);
 
 module.exports = Dish;
