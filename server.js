@@ -19,13 +19,13 @@ app.get('/', (req, res) => {
 });
 
 ////////////////////
-//  DISHES
+//  DISHES => USERS
 ///////////////////
 
 //Show one dish
 app.get('/api/dishes/:id', function (req, res) {
-    db.Dish.findOne({_id: req.params.id }, function(err, data) {
-        res.json(data);
+    db.Dish.findOne({_id: req.params.id }, function(err, dish) {
+        res.json({data:dish});
     });
 });
 
@@ -55,30 +55,49 @@ app.delete('/api/dishes/:id', (req, res) => {
 });
 
 ////////////////////
-//  ORDERS
+//  ORDERS => ADMIN
 ///////////////////
 
-app.get("api/orders", (req,res) =>{
-    db.Dish.find(function(err, orders){
-        if (err) {
-            console.log("index error: " + err);
-            res.sendStatus(500);
-        }
-        res.json({data:orders});
+//Show all orders
+app.get("/api/orders", (req,res) =>{
+    db.Order.find()
+        // populate fills in the author id with all the author data
+        .populate('dishes')
+        .exec(function(err, orders){
+            if (err) { console.log("index error: " + err); }
+            res.json(orders);
     });
 })
 
+//Show one order
+app.get('/api/orders/:id', function (req, res) {
+    db.Order.findOne({_id: req.params.id }, function(err, order) {
+        res.json({data:order});
+    });
+});
+
+//Destroy one order
+app.delete('/api/orders/:id', (req, res) => {
+    // get todo id from url params (`req.params`)
+    let orderId = req.params.id;
+    // find todo in db by id and delete
+    db.Order.deleteOne(
+        { _id: orderId },
+        (err, deletedOrder) => {
+        if(err){ return res.status(400).json({err: "error has occured"})}
+        res.json({data:deletedOrder});
+    });
+});
 
 // Create order
-app.post('/api/order', (req, res) => {
-    /* This endpoint will add a todo to our "database"
-     * and respond with the newly created todo.
-     */
-    const newOrder = req.body;
-    newTodo._id  = parseInt(todos.length);
-    todos.push(newTodo);
-    res.status(200).json(newTodo);
+app.post('/api/orders', function (req, res) {
+    let newOrder = req.body;
+    db.Order.create(newOrder,(err,savedOrder)=>{
+        if(err){ return res.status(400).json({err: "error has occured"})}; 
+        res.json({data:savedOrder})
+    })
 });
+
 
 /**********
  * SERVER *

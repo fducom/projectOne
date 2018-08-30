@@ -8,17 +8,17 @@ let dishes_list = [
     { name: 'chocolate', completed: false , price: 8.00, description:"asddsa" },
 ];
 
-db.Dish.remove({}, function(err, books){
+
+db.Dish.remove({}, (err, dishes)=>{
     if(err) {
         console.log('Error occurred in remove', err);
     } else {
-        console.log('removed all books');
+        console.log('removed all dishes');
 
-    // create new records based on the array books_list
-    db.Dish.create(dishes_list, function(err, dishes){
+    // create new dishes based on the array dishes_list
+    db.Dish.create(dishes_list, (err, dishes)=>{
         if (err) { return console.log('err', err); }
         console.log("created", dishes.length, "dishes");
-        process.exit();
     });
     }
 });
