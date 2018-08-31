@@ -1,25 +1,40 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const userRoutes = require('./routes/user')
+const jwt = require('jsonwebtoken')
 
 const db = require("./models");
+
 // configure bodyParser (for receiving form data)
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
+app.use('/user', userRoutes);
 
 ////////////////////
-//  ROUTES
+//  ROUTES       //
 ///////////////////
-
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/views/login.html');
+});
+
+app.get('/menu', (req, res) => {
+    res.sendFile(__dirname + '/views/menu.html');
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(__dirname + '/views/about.html');
+});
+
 ////////////////////
-//  DISHES => USERS
+//DISHES => USERS //
 ///////////////////
 
 //Show one dish
@@ -41,7 +56,7 @@ app.get('/api/dishes', function (req, res) {
     });
 });
 
-// Destroy one dish
+// Destroy one dish 
 app.delete('/api/dishes/:id', (req, res) => {
     // get todo id from url params (`req.params`)
     let dishId = req.params.id;
@@ -55,13 +70,74 @@ app.delete('/api/dishes/:id', (req, res) => {
 });
 
 ////////////////////
-//  ORDERS => ADMIN
+// AUTHENTICATION
+///////////////////
+    
+app.post('/verify', verifyToken, (req, res) => {
+    let verified= jwt.verify(req.token, 'waffles')
+    console.log("verified: ", verified)
+    res.json(verified)
+})
+
+// SAMPLE PROTECTED ROUTE!
+// protected route - a route only a user with a jwt token in their header can access.
+app.post('/protectedPage', verifyToken, (req, res) => {
+    console.log(req.token)
+    jwt.verify(req.token, 'waffles', (err, authData) => {
+        if(err) {
+            res.sendStatus(403);
+        } 
+        else if(authData.isAdmin){
+
+
+        }
+        else if(authData.isAdmin === false){
+            
+            
+        }
+        else {
+            res.json({
+            message: 'Post created',
+            authData
+            });
+        }
+        });
+    });
+
+// FORMAT OF TOKEN
+// Authorization: Bearer <access_token>
+
+// Verify Tokenj 
+function verifyToken(req, res, next) {
+    console.log("in verify...");
+    // Get auth header value
+    // when we send our token, we want to send it in our header
+    const bearerHeader = req.headers['authorization'];
+    console.log(bearerHeader)
+    // Check if bearer is undefined
+    if(typeof bearerHeader !== 'undefined'){
+        const bearer = bearerHeader.split(' ');
+        // Get token from array
+        const bearerToken = bearer[1];
+        // Set the token
+        req.token = bearerToken;
+        // Next middleware
+        next();
+    
+        } else {
+        // Forbidden
+        res.sendStatus(403);
+        }
+    }
+
+////////////////////
+// ORDERS => ADMIN
 ///////////////////
 
 //Show all orders
 app.get("/api/orders", (req,res) =>{
     db.Order.find()
-        // populate fills in the author id with all the author data
+        // populate fills in the dishes id with all the dishes data
         .populate('dishes')
         .exec(function(err, orders){
             if (err) { console.log("index error: " + err); }
@@ -71,8 +147,12 @@ app.get("/api/orders", (req,res) =>{
 
 //Show one order
 app.get('/api/orders/:id', function (req, res) {
-    db.Order.findOne({_id: req.params.id }, function(err, order) {
-        res.json({data:order});
+    db.Order.findOne({_id: req.params.id })
+        // populate fills in the dishes id with all the dishes data
+        .populate('dishes')
+        .exec(function(err, orders){
+            if (err) { console.log("index error: " + err); }
+            res.json(orders);
     });
 });
 
@@ -89,6 +169,8 @@ app.delete('/api/orders/:id', (req, res) => {
     });
 });
 
+
+
 // Create order
 app.post('/api/orders', function (req, res) {
     let newOrder = req.body;
@@ -97,7 +179,6 @@ app.post('/api/orders', function (req, res) {
         res.json({data:savedOrder})
     })
 });
-
 
 /**********
  * SERVER *

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/todo-app', { useNewUrlParser: true } )
+mongoose.connect('mongodb://localhost/projectOne', { useNewUrlParser: true } )
 
 
 const Dish = require('./dishes');
