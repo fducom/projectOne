@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/projectOne', { useNewUrlParser: true } )
 
-
 const Dish = require('./dishes');
 const Order = require("./orders");
 

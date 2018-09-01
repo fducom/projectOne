@@ -4,53 +4,46 @@ footer {
     letter-spacing: 2px;
 }
 
+.contain{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr ;
+}
+
 .photo {
-   display:grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   grid-template-rows: 1fr 1fr ;
-   margin:20px 20;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    margin:20px 20px;
 }
 
-.a {
-   grid-row:1;
-   width:100%;
-   padding:5px;
-}
-
-.b {
-   grid-row: 2;
-   width:100%;
-   padding:5px;
-}
-
-.c {
-   grid-row: 3;
-   width:100%;
-   padding:5px;
-}
 
 .orderList {
-   grid-row:1 /span 3;
-   grid-column:3 ;
-   border:1px solid black;
-   margin:5px 10px;
-   text-align: center;
-   background-color:rgb(196, 192, 192);
+    grid-row: 1;
+    grid-column: 2;
+    margin:25px 10px;
+    text-align: center;
+    background-color:rgb(196, 192, 192);
+    height: 600px;
+    overflow: scroll;
+}
+
+img{
+    width:50%;
+    padding: 2%;
 }
 
 .photo img:hover {
-   opacity: 0.5;
-   
+    opacity: 0.5;
 }
 
 @media only screen and (max-width: 720px) {
     footer {
-         width: 100%;
-         margin:auto;
+        width: 100%;
+        margin:auto;
     }
 
     .photo {
-       display:block;
+        display:block;
     }
 
 }
