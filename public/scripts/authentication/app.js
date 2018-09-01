@@ -15,9 +15,8 @@ $('#signupForm').on('submit', submitSignup)
 
 $('#loginForm').on('submit', submitLogin)
 
-
 function checkForLogin(){
-  if(localStorage.length > 0){
+    if(localStorage.length > 0){
 
     let jwt = localStorage.token
     $.ajax({

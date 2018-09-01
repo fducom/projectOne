@@ -7,6 +7,7 @@ const dishSchema = new Schema({
     completed: Boolean,
     price: Number,
     description:String, //Customer specifications
+    image: String
 });
 
 const Dish = mongoose.model('Dish', dishSchema);

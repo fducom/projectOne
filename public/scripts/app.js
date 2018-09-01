@@ -1,13 +1,3 @@
-$('#menu-a').on('click',function(){
-    $(this).toggle();
-    $('form').append(`
-    <p>new order</p>
-    <input class = 'itemList' type = 'hidden'></input>
-`)
-})
-
-
-
 // google map with geolocation
 var map, infoWindow;
     function initMap() {

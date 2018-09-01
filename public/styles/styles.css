@@ -1,26 +1,30 @@
 body {
-    background-color:gray;
-}
-.carousel-inner img {
-    margin:auto;
+    background-color:black;    
 }
 
 div.gallery {
-    border: 1px solid #ccc;
+    margin-top:50px;
+    max-width:360px;
+    height:auto;
+    margin:auto;
     margin-top:50px;
 }
 
 div.gallery img {
     width: 100%;
-    height: auto;
+    height:auto;
+    border-radius: 100%;
 }
 .desc {
-    background-color: white;
+    background-color:none;
+    color:white;
+    text-align:center;
 }
 footer {
     font-size:20px;
     text-align: center;
     letter-spacing: 2px;
+    color:white;
 }
 
 .inputField {
@@ -38,10 +42,18 @@ footer {
     width: 33.33%;
 }
 
-
-img {
-    border-radius: 20px;
+#carouselExampleIndicators {
+    max-width:480px;
+    margin:auto;
+    height:auto;
+    margin-top:50px;
 }
+
+.gallery :hover{
+    opacity: 0.4;
+   /* transform: scale(1.5) */
+}
+
 
 
 @media only screen and (max-width: 720px) {
@@ -64,6 +76,4 @@ img {
     img {
         width:100%
     }
-
-
 }
