@@ -7,8 +7,8 @@ $(document).ready(function(){
                 $(".photo").append(`<img src=${json.data[i].image} value="${json.data[i].name}" name=${json.data[i].price}>`);
             }
         },
-        error: function(){
-
+        error: function(error){
+            console.log(error);
         },
     });
 
@@ -17,13 +17,13 @@ $(document).ready(function(){
         var item = $(this).attr("value");
         var price = $(this).attr("name");
         console.log(item)
-        $('form').append(` 
+        $('.Foodlist').append(` 
             <p>${item}   $${price}<button class="DeleteBtn">delete</button></p>
-            <input class = 'itemList' type = 'hidden'></input>`)
+            <input value = ${item} type = 'hidden'></input>`)
     });
 
-    $("Foodlist").on("click","button",function(e){
-        e.preventDefault();
+    $(".Foodlist").on("click",".DeleteBtn",function(event){
+        event.preventDefault();
         console.log($(this));
         $(this).parent().remove()
     })
