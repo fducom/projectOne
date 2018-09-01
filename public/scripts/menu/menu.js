@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    //AJAX request to show menu
     $.ajax({
         method: "GET",
         url: 'http://localhost:3000/api/dishes',  
@@ -11,12 +13,15 @@ $(document).ready(function(){
             console.log(error);
         },
     });
-    $("#orderNow").on("submit", event =>{
+
+    //AJAX request to create order
+    $("#orderNow").on('click', event =>{
         event.preventDefault();
         let newOrder = $("form").serialize();
+        console.log(newOrder);
         $.ajax({
             method: "POST",
-            url: 'http://localhost:3000/api/order',
+            url: 'http://localhost:3000/api/orders',
             data: newOrder,
             success: json =>{
                 console.log(json)
@@ -31,13 +36,11 @@ $(document).ready(function(){
         for(let i = 0; i < array.length ; i++){
             total_array.push(parseInt(array[i].getAttribute("value")));
         }
-        // console.log(total_array);
         var sum = 0;
         for(let j = 0; j < total_array.length;j++){
             sum = sum + total_array[j]
         }
         document.getElementById("showPrice").innerText = `Total Price: $${Math.round(sum * 100) / 100}`
-        console.log($("form").serialize());
         document.getElementById("TotalPrice").value = `${sum}`
         return sum;
     }
