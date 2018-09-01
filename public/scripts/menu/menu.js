@@ -6,7 +6,8 @@ $(document).ready(function(){
         url: 'http://localhost:3000/api/dishes',  
         success: function (json){
             for (let i = 0; i < json.data.length; i++){
-                $(".photo").append(`<img src=${json.data[i].image} value="${json.data[i].name}" name=${json.data[i].price}>`);
+                $(".photo").append(`<img src=${json.data[i].image} value="${json.data[i].name}" 
+                                    name=${json.data[i].price} data-id=${json.data[i]._id}>`);
             }
         },
         error: function(error){
@@ -17,6 +18,8 @@ $(document).ready(function(){
     //AJAX request to create order
     $("#orderNow").on('click', event =>{
         event.preventDefault();
+        var payment = $("#Payment").val();
+        $("input[name='paymentMethod']").attr("value",`${payment}`)
         let newOrder = $("form").serialize();
         console.log(newOrder);
         $.ajax({
@@ -45,14 +48,15 @@ $(document).ready(function(){
         return sum;
     }
 
-    $('.photo').on('click',"img",function(e){
+    $('.photo').on('click',"img",function(e,json){
         e.preventDefault();
         var item = $(this).attr("value");
+        var itemId = $(this).attr("data-id");
         var price = $(this).attr("name");
         $('.Foodlist').append(`
-        <div> 
+        <div>
             <p>${item}   $${price}<button class="DeleteBtn">delete</button></p>
-            <input name="name" value="${item}" type='hidden'>
+            <input name="dishes" value="${itemId}" type='hidden'>
             <input name="price" value="${price}" type='hidden'>
         </div>`);
         CalculateTotal();
