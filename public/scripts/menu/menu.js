@@ -48,7 +48,7 @@ $(document).ready(function(){
         return sum;
     }
 
-    $('.photo').on('click',"img",function(e,json){
+    $('.photo').on('click',"img",function(e){
         e.preventDefault();
         var item = $(this).attr("value");
         var itemId = $(this).attr("data-id");

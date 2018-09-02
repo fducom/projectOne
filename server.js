@@ -33,6 +33,10 @@ app.get('/about', (req, res) => {
     res.sendFile(__dirname + '/views/about.html');
 });
 
+app.get('/admin', (req, res) => {
+    res.sendFile(__dirname + '/views/admin.html');
+});
+
 ////////////////////
 //DISHES => USERS //
 ///////////////////
