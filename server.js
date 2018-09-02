@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user')
 const jwt = require('jsonwebtoken')
-
 const db = require("./models");
 
 // configure bodyParser (for receiving form data)
@@ -96,8 +95,9 @@ app.post('/protectedPage', verifyToken, (req, res) => {
 
         }
         else if(authData.isAdmin === false){
-            
-            
+            // app.get('/menu', (req, res) => {
+            //     res.sendFile(__dirname + '/views/menu.html');
+            // }); 
         }
         else {
             res.json({
@@ -127,7 +127,6 @@ function verifyToken(req, res, next) {
         req.token = bearerToken;
         // Next middleware
         next();
-    
         } else {
         // Forbidden
         res.sendStatus(403);

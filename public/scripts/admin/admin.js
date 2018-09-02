@@ -13,10 +13,13 @@ $(document).ready(function(){
                 for(let j = 0; j < json.data[i].dishes.length ;j++){
                     $(`#order-${i}`).append(`<li>${json.data[i].dishes[j].name}</li>`);
                 }
-                $(`#number${i}`).append(`Total price: $${json.data[i].totalPrice}
-                                        <input value="${json.data[i]._id}" type='hidden'> 
+                $(`#number${i}`).append(`Total price: $${json.data[i].totalPrice} ||
+                                        <input value="${json.data[i]._id}" type='hidden'>
+                                        <label for="status">Completed:</label> 
+                                        <input type="checkbox" id="status" value="status"> ||
                                         <button class="del"> Delete</button>`);
             }
+            
             $("#ControlList").children("div").on("click", ".del", function(e){
                 e.preventDefault();
                 let delOrderId = $(this).siblings("input").attr("value");
@@ -24,9 +27,13 @@ $(document).ready(function(){
                 $.ajax({
                     method: "DELETE",
                     url: `http://localhost:3000/api/orders/${delOrderId}`,
-                    success: json =>{
-                        console.log("it's working")
+                    success: function(){
+                        $(this).parent().remove();
+                        location.reload();
                     },
+                    error: function(){
+
+                    }
                 });
             });
         },
