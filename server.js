@@ -145,7 +145,7 @@ app.get("/api/orders", (req,res) =>{
         .populate('dishes')
         .exec(function(err, orders){
             if (err) { console.log("index error: " + err); }
-            res.json(orders);
+            res.json({data:orders});
     });
 })
 
