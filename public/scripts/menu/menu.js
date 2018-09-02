@@ -14,23 +14,30 @@ $(document).ready(function(){
             console.log(error);
         },
     });
-
     //AJAX request to create order
     $("#orderNow").on('click', event =>{
         event.preventDefault();
         var payment = $("#Payment").val();
         $("input[name='paymentMethod']").attr("value",`${payment}`)
         let newOrder = $("form").serialize();
-        console.log(newOrder);
-        $.ajax({
-            method: "POST",
-            url: 'http://localhost:3000/api/orders',
-            data: newOrder,
-            success: json =>{
-                console.log(json)
-            },
-            
-        });
+        if($(".Foodlist").find("p").length > 1){
+            if(payment === null){
+                alert("Please select a valid payment method");
+            } else{
+                $.ajax({
+                    method: "POST",
+                    url: 'http://localhost:3000/api/orders',
+                    data: newOrder,
+                    success: json =>{
+                        console.log(json)
+                    },
+                });
+                alert("Thanks for your order");
+                window.location.href = "http://localhost:3000/";
+            }
+        } else if($(".Foodlist").find("p").length == 0){
+            alert("Please make a valid order");
+        }
     });
 
     function CalculateTotal(){
