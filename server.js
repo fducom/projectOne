@@ -156,7 +156,7 @@ app.get('/api/orders/:id', function (req, res) {
         .populate('dishes')
         .exec(function(err, orders){
             if (err) { console.log("index error: " + err); }
-            res.json(orders);
+            res.json({data:orders});
     });
 });
 
