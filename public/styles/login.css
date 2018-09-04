@@ -1,3 +1,8 @@
+.wrapper{
+    text-align: center;
+}
+
+
 form {
     color:gray;
     display:inline-block;    

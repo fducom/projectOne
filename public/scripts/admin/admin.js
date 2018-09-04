@@ -18,25 +18,29 @@ $(document).ready(function(){
                                         <input value="${json.data[i]._id}" type='hidden'>
                                         <label for="status">Completed:</label> 
                                         <input type="checkbox" id="status" value="status"> ||
-                                        <button class="del"> Delete</button>`);
+                                        <button class="del" disabled> Delete</button>`);
             }
-            
-            $("#ControlList").children("div").on("click", ".del", function(e){
-                e.preventDefault();
-                let delOrderId = $(this).siblings("input").attr("value");
-                //AJAX request to delete an existing order
-                $.ajax({
-                    method: "DELETE",
-                    url: `http://localhost:3000/api/orders/${delOrderId}`,
-                    success: function(){
-                        $(this).parent().remove();
-                        location.reload();
-                    },
-                    error: function(){
-
-                    }
-                });
+        
+            $("[type=checkbox]").click(function() {
+                $(this).siblings("button").attr("disabled", !this.checked);
             });
+            
+        $("#ControlList").children("div").on("click", ".del", function(e){
+            e.preventDefault();
+            let delOrderId = $(this).siblings("input").attr("value");
+            //AJAX request to delete an existing order
+            $.ajax({
+                method: "DELETE",
+                url: `http://localhost:3000/api/orders/${delOrderId}`,
+                success: function(){
+                    $(this).parent().remove();
+                    location.reload();
+                },
+                error: function(){
+
+                }
+            });
+        });
         },
         error: function(error){
             console.log(error);
