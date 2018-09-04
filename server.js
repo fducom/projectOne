@@ -32,9 +32,9 @@ app.get('/about', (req, res) => {
     res.sendFile(__dirname + '/views/about.html');
 });
 
-// app.get('/admin', (req, res) => {
-//     res.sendFile(__dirname + '/views/admin.html');
-// });
+app.get('/admin', (req, res) => {
+    res.sendFile(__dirname + '/views/admin.html');
+});
 
 ////////////////////
 //   USERS       //
@@ -93,18 +93,18 @@ app.post('/verify', verifyToken, (req, res) => {
 }) 
 
 //Protected admin route
-app.get('/admin', verifyToken, (req, res) => {
-    console.log(req.token)
-    jwt.verify(req.get.token, 'waffles', (err, authData) => {
-        if(err) {
-            console.log(req.token)
-            res.sendStatus(403);
-        }
-        else {
-            res.sendFile(__dirname + '/views/admin.html');
-        }
-    });
-});
+// app.post('/admin', verifyToken, (req, res) => {
+//     console.log(req.token)
+//     jwt.verify(req.headers.token, 'waffles', (err, authData) => {
+//         if(err) {
+//             console.log(req.token)
+//             res.sendStatus(403);
+//         }
+//         else {
+//             res.sendFile(__dirname + '/views/admin.html');
+//         }
+//     });
+// });
 
 // FORMAT OF TOKEN
 // Authorization: Bearer <access_token>

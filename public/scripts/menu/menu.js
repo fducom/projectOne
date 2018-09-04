@@ -6,14 +6,20 @@ $(document).ready(function(){
         url: 'http://localhost:3000/api/dishes',  
         success: function (json){
             for (let i = 0; i < json.data.length; i++){
-                $(".photo").append(`<img src=${json.data[i].image} value="${json.data[i].name}" 
-                                    name=${json.data[i].price} data-id=${json.data[i]._id}>`);
+                $(".photo").append(`<div class="wrap">
+                                        <img src=${json.data[i].image} value="${json.data[i].name}" 
+                                        name=${json.data[i].price} data-id=${json.data[i]._id}>
+                                        <div class="middle">
+                                            <div class="centered">${json.data[i].name} $${json.data[i].price}</div>
+                                        </div>
+                                    </div>`);
             }
         },
         error: function(error){
             console.log(error);
         },
     });
+
     //AJAX request to create order
     $("#orderNow").on('click', event =>{
         event.preventDefault();

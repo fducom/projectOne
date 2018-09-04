@@ -11,6 +11,7 @@ footer {
 }
 
 .photo {
+    column-count: 2;
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
     margin:20px 20px;
@@ -21,6 +22,7 @@ footer {
     grid-row: 1;
     grid-column: 2;
     margin:25px 10px;
+    margin-left: 0px;
     text-align: center;
     background-color:rgb(196, 192, 192);
     height: 1fr;
@@ -28,15 +30,34 @@ footer {
 }
 
 img{
-    width:50%;
+    width:100%;
     padding: 2%;
+    transition: .5s ease;
 }
 
 .photo img:hover {
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
-@media only screen and (max-width: 720px) {
+.wrap{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;;
+}
+
+.centered:hover{
+    z-index: 1;
+}
+
+@media only screen and (max-width: 650px) {
     footer {
         width: 100%;
         margin:auto;
@@ -44,6 +65,9 @@ img{
 
     .photo {
         display:block;
+    }
+    .photo {
+        column-count: 1;
     }
 
 }

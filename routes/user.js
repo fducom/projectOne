@@ -127,7 +127,6 @@ router.post('/login', (req, res) => {
     })
 })
 
-
 router.delete('/:userId', (req, res) => {
     console.log("hitting delete");
     db.User.deleteOne({_id: req.params.userId}, (err, result) =>{

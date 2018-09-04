@@ -2,7 +2,13 @@
     background-color: gray;
     color: aliceblue;
     text-align: center;
-    margin:  0 20%;
+    margin:  2em 10%;
     height: 80vh;
     overflow: scroll;
+}
+
+#orders{
+    color: white;
+    text-align: center;
+    margin-top: 1em;
 }
