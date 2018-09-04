@@ -11,7 +11,11 @@ const orderSchema = new Schema({
         ref: 'Dish'
     }],
     paymentMethod: String,
-    totalPrice: Number
+    totalPrice: Number,
+    createdAt: {
+                type: Date,
+                default: Date.now
+                }
 });
 
 const Order = mongoose.model('Order', orderSchema);

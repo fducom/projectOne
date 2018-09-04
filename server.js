@@ -40,11 +40,11 @@ app.get('/admin', (req, res) => {
 //   USERS       //
 ///////////////////
 
-app.get("/api/users",function(req,res){
-    db.User.find({}, (err, allUsers) => {
-        res.json(allUsers);
-    });
-})
+// app.get("/api/users",function(req,res){
+//     db.User.find({}, (err, allUsers) => {
+//         res.json(allUsers);
+//     });
+// })
 
 ////////////////////
 //DISHES => USERS //
@@ -93,18 +93,18 @@ app.post('/verify', verifyToken, (req, res) => {
 }) 
 
 //Protected admin route
-// app.post('/admin', verifyToken, (req, res) => {
-//     console.log(req.token)
-//     jwt.verify(req.headers.token, 'waffles', (err, authData) => {
-//         if(err) {
-//             console.log(req.token)
-//             res.sendStatus(403);
-//         }
-//         else {
-//             res.sendFile(__dirname + '/views/admin.html');
-//         }
-//     });
-// });
+app.get('/admin', verifyToken, (req, res) => {
+    console.log(req.token)
+    jwt.verify(req.headers.token, 'waffles', (err, authData) => {
+        if(err) {
+            console.log(req.token)
+            res.sendStatus(403);
+        }
+        else {
+            res.sendFile(__dirname + '/views/admin.html');
+        }
+    });
+});
 
 // FORMAT OF TOKEN
 // Authorization: Bearer <access_token>
