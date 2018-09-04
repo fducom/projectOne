@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    
     //AJAX request to get all orders from the data base
     $.ajax({
         method: "GET",

@@ -32,9 +32,19 @@ app.get('/about', (req, res) => {
     res.sendFile(__dirname + '/views/about.html');
 });
 
-app.get('/admin', (req, res) => {
-    res.sendFile(__dirname + '/views/admin.html');
-});
+// app.get('/admin', (req, res) => {
+//     res.sendFile(__dirname + '/views/admin.html');
+// });
+
+////////////////////
+//   USERS       //
+///////////////////
+
+app.get("/api/users",function(req,res){
+    db.User.find({}, (err, allUsers) => {
+        res.json(allUsers);
+    });
+})
 
 ////////////////////
 //DISHES => USERS //
@@ -80,33 +90,21 @@ app.post('/verify', verifyToken, (req, res) => {
     let verified= jwt.verify(req.token, 'waffles')
     console.log("verified: ", verified)
     res.json(verified)
-})
+}) 
 
-// SAMPLE PROTECTED ROUTE!
-// protected route - a route only a user with a jwt token in their header can access.
-app.post('/protectedPage', verifyToken, (req, res) => {
+//Protected admin route
+app.get('/admin', verifyToken, (req, res) => {
     console.log(req.token)
-    jwt.verify(req.token, 'waffles', (err, authData) => {
+    jwt.verify(req.get.token, 'waffles', (err, authData) => {
         if(err) {
+            console.log(req.token)
             res.sendStatus(403);
-        } 
-        else if(authData.isAdmin){
-
-
-        }
-        else if(authData.isAdmin === false){
-            // app.get('/menu', (req, res) => {
-            //     res.sendFile(__dirname + '/views/menu.html');
-            // }); 
         }
         else {
-            res.json({
-            message: 'Post created',
-            authData
-            });
+            res.sendFile(__dirname + '/views/admin.html');
         }
-        });
     });
+});
 
 // FORMAT OF TOKEN
 // Authorization: Bearer <access_token>
@@ -118,6 +116,7 @@ function verifyToken(req, res, next) {
     // when we send our token, we want to send it in our header
     const bearerHeader = req.headers['authorization'];
     console.log(bearerHeader)
+    console.log("Hi")
     // Check if bearer is undefined
     if(typeof bearerHeader !== 'undefined'){
         const bearer = bearerHeader.split(' ');
@@ -127,11 +126,11 @@ function verifyToken(req, res, next) {
         req.token = bearerToken;
         // Next middleware
         next();
-        } else {
+    } else {
         // Forbidden
         res.sendStatus(403);
-        }
     }
+}
 
 ////////////////////
 // ORDERS => ADMIN

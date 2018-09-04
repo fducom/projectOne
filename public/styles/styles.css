@@ -54,7 +54,11 @@ footer {
    /* transform: scale(1.5) */
 }
 
-
+#logo{
+    width: 100px;
+    height: auto;
+    padding: 0;
+}
 
 @media only screen and (max-width: 720px) {
     .responsive {

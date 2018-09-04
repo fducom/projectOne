@@ -6,7 +6,7 @@ footer {
 
 .contain{
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr ;
 }
 
@@ -23,8 +23,8 @@ footer {
     margin:25px 10px;
     text-align: center;
     background-color:rgb(196, 192, 192);
-    height: 600px;
-    overflow: scroll;
+    height: 1fr;
+    overflow: auto;
 }
 
 img{

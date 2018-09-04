@@ -22,10 +22,6 @@
     padding:5px;
 }
 
-/* span {
-    display:block;
-} */
-
 #location {
     grid-row:3;
     grid-column:1;
@@ -40,7 +36,7 @@ span {
 
 }
 
-@media only screen and (max-width: 720px){
+@media only screen and (max-width: 550px){
     #about-detail {
         display:block;    
     }

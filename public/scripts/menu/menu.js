@@ -20,7 +20,7 @@ $(document).ready(function(){
         var payment = $("#Payment").val();
         $("input[name='paymentMethod']").attr("value",`${payment}`)
         let newOrder = $("form").serialize();
-        if($(".Foodlist").find("p").length > 1){
+        if($(".Foodlist").find("p").length > 0){
             if(payment === null){
                 alert("Please select a valid payment method");
             } else{

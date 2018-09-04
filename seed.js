@@ -4,13 +4,13 @@ let dishes_list = [
     { name: 'California Roll', completed: false , price: 7.00, description:"sadd", image:"./images/californiaroll.jpg" },
     { name: 'Spicy California Roll', completed: false , price: 8.00, description:"asdds",image:"./images/7789_spicycaliroll.jpg" },
     { name: 'Vegetable California Roll', completed: false , price: 7.50, description:"asddsa",image:"./images/7714_vegecaliroll.jpg" },
-    { name: 'Spicy California Spring Roll', completed: false , price: 9.00, description:"asddsa",image:"./images/7789_spicycaliroll.jpg" },
+    { name: 'Spicy California Spring Roll', completed: false , price: 9.00, description:"asddsa",image:"./images/73adc-8318_spicycalispringroll.jpg" },
     { name: 'Rainbow Roll', completed: false , price: 8.00, description:"asddsa",image:"./images/8219_rainroll.jpg" },
     { name: 'Salmon Avocado Roll', completed: false , price: 6.90, description:"asddsa",image:"./images/7673_salmavoroll.jpg" },
-    { name: 'Atlantic Salmon Avocado Roll', completed: false , price: 9.00, description:"asddsa",image:"./images/7673_salmavoroll.jpg" },
+    { name: 'Atlantic Salmon Avocado Roll', completed: false , price: 9.00, description:"asddsa",image:"./images/7888_salmvolc.jpg" },
     { name: 'Spicy Salmon Roll', completed: false , price: 7.80, description:"asddsa",image:"./images/7739_spicysalm.jpg" },
     { name: 'Spicy Tuna Roll', completed: false , price: 8.50, description:"asddsa",image:"./images/7829_spicytuna.jpg" },
-    { name: 'Salmon Volcano Roll', completed: false , price: 9.00, description:"asddsa",image:"./images/7673_salmavoroll.jpg" },
+    { name: 'Maple Salmon Roll', completed: false , price: 9.00, description:"asddsa",image:"./images/8177_maplesalmroll.jpg" },
 ];
 
 db.Dish.remove({}, (err, dishes)=>{

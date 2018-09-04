@@ -29,7 +29,7 @@ function checkForLogin(){
         console.log(response)
         user = { email: response.email, _id: response._id }
         console.log("you can access variable user: " , user)
-        $('#message').text(`Welcome, ${ response.email || response.result.email } `)
+        $('#message').text(`Welcome, ${ response.email || response.result.email} `)
     }).fail(function (err) {
         console.log(err);
     });
@@ -80,9 +80,7 @@ function submitSignup(e){
         $('#signupForm').toggleClass('show');
         $('#noToken').toggleClass('show');
         checkForLogin();
-
         }
-
     })
 }
 

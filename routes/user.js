@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const db = require('../models');
 const jwt = require('jsonwebtoken')
 
-
 router.post('/signup', (req, res) => {
     console.log(req.body);
 
@@ -67,26 +66,26 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  console.log("LOGIN CALLED");
-  // find the user in our user db
-  console.log("body", req.body)
-  db.User.find({email: req.body.email})
-    .select('+password')
-    .exec()
-    // if we have found a user
-    .then( users => {
-      // if there is not email in our db
-      console.log("USERS: ", users);
-      if(users.length < 1) {
-        return res.status(401).json({
-          message: "Email/Password incorrect"
-        })
-      }
-      // we have an email in our db that matches what they gave us
-      // now we have to compare their hashed password to what we have in our db
-      console.log("body", req.body);
-      console.log("hash", users[0].password);
-      bcrypt.compare(req.body.password, users[0].password, (err, match) => {
+    console.log("LOGIN CALLED");
+    // find the user in our user db
+    console.log("body", req.body)
+    db.User.find({email: req.body.email})
+        .select('+password')
+        .exec()
+        // if we have found a user
+        .then( users => {
+        // if there is not email in our db
+        console.log("USERS: ", users);
+        if(users.length < 1) {
+            return res.status(401).json({
+            message: "Email/Password incorrect"
+            })
+        }
+        // we have an email in our db that matches what they gave us
+        // now we have to compare their hashed password to what we have in our db
+        console.log("body", req.body);
+        console.log("hash", users[0].password);
+        bcrypt.compare(req.body.password, users[0].password, (err, match) => {
         console.log(match)
         // If the compare function breaks, let them know
         if(err){console.log(err);return res.status(500).json({err})}
@@ -111,34 +110,29 @@ router.post('/login', (req, res) => {
             );
             console.log("NEW TOKEN: ", token)
             // send success back to user, along with a token.
-            return res.status(200).json(
-            {
-                message: 'Auth successful',
-                token
-            }
-            )
+            return res.status(200).json({message: 'Auth successful',token})
         // the password provided does not match the password on file.
         } else {
-          console.log("NOT A MATCH")
-          res.status(401).json({message: "Email/Password incorrect"})
+            console.log("NOT A MATCH")
+            res.status(401).json({message: "Email/Password incorrect"})
         }
-      })
+    })
 
 
     })
     .catch( err => {
-      console.log("OUTSIDE ERROR_")
-      console.log(err);
-      res.status(500).json({err})
+        console.log("OUTSIDE ERROR_")
+        console.log(err);
+        res.status(500).json({err})
     })
 })
 
 
 router.delete('/:userId', (req, res) => {
-  console.log("hitting delete");
-  db.User.deleteOne({_id: req.params.userId}, (err, result) =>{
-    if(err){return res.status(500).json({err})}
-    res.status(200).json({result})
+    console.log("hitting delete");
+    db.User.deleteOne({_id: req.params.userId}, (err, result) =>{
+        if(err){return res.status(500).json({err})}
+        res.status(200).json({result})
   })
 })
 
