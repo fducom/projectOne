@@ -59,6 +59,12 @@ footer {
     padding: 0;
 }
 
+#adminName{
+    color: white;
+    margin-left: 5%;
+    margin-top: 1em;
+}
+
 @media only screen and (max-width: 720px) {
     .responsive {
         width: 100%;

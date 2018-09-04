@@ -28,6 +28,10 @@ app.get('/menu', (req, res) => {
     res.sendFile(__dirname + '/views/menu.html');
 });
 
+app.get('/menuout', (req, res) => {
+    res.sendFile(__dirname + '/views/menuout.html');
+});
+
 app.get('/about', (req, res) => {
     res.sendFile(__dirname + '/views/about.html');
 });
