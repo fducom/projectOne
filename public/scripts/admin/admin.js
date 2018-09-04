@@ -15,6 +15,7 @@ $(document).ready(function(){
                     $(`#order-${i}`).append(`<li>${json.data[i].dishes[j].name}</li>`);
                 }
                 $(`#number${i}`).append(`Total price: $${json.data[i].totalPrice} ||
+                                        Payment: ${json.data[i].paymentMethod} || 
                                         <input value="${json.data[i]._id}" type='hidden'>
                                         <label for="status">Completed:</label> 
                                         <input type="checkbox" id="status" value="status"> ||
