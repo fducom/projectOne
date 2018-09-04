@@ -98,7 +98,8 @@ router.post('/login', (req, res) => {
                 {
                     // add some identifying information
                     email: users[0].email,
-                    _id: users[0]._id
+                    _id: users[0]._id,
+                    isAdmin: users[0].isAdmin
                 }, 
                 // add our super secret key (which should be hidden, not plaintext like this)
                 "waffles",

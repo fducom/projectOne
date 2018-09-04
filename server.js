@@ -44,11 +44,11 @@ app.get('/admin', (req, res) => {
 //   USERS       //
 ///////////////////
 
-// app.get("/api/users",function(req,res){
-//     db.User.find({}, (err, allUsers) => {
-//         res.json(allUsers);
-//     });
-// })
+app.get("/api/users",function(req,res){
+    db.User.find({}, (err, allUsers) => {
+        res.json(allUsers);
+    });
+})
 
 ////////////////////
 //DISHES => USERS //

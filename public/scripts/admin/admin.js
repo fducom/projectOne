@@ -14,10 +14,12 @@ $(document).ready(function(){
             }
         }).done(function (response) {
             console.log(response)
-            user = { email: response.email, _id: response._id }
+            user = { email: response.email, _id: response._id, isAdmin: response.isAdmin}
             console.log("you can access variable user: " , user)
-            $('#adminName').text(`Admin: ${ response.email || response.result.email} `)
-            logged();
+            if (user.isAdmin){
+                $('#adminName').text(`Admin: ${ response.email || response.result.email} `)
+                logged();
+            }
 
         }).fail(function (err) {
             console.log(err);
@@ -41,10 +43,10 @@ $(document).ready(function(){
         $.ajax({
             method: "GET",
             url: 'http://localhost:3000/api/orders',  
-            success: function (json,response){
+            success: function (json){
                 for(let i = 0; i < json.data.length ; i++){
                     $("#ControlList").append(   `<div class="Ord" id="number${i}" style="border-bottom: 2px solid white">
-                                                    Order number: ${i} // Created at: ${json.data[i].createdAt}
+                                                    Order number: ${i} // by: ${json.data[i]._user} //Created at: ${json.data[i].createdAt}
                                                     <div id="order-${i}"></div>
                                                 </div>`);
                     for(let j = 0; j < json.data[i].dishes.length ;j++){

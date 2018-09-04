@@ -15,7 +15,8 @@ $(document).ready(function(){
             console.log(response)
             user = { email: response.email, _id: response._id }
             console.log("you can access variable user: " , user)
-            $('#adminName').text(`Logged as: ${ response.email || response.result.email} `)
+            $('#adminName').text(`Logged as: ${ response.email || response.result.email}`)
+            $("#adminName").append(`<input type="hidden" name="_user.email" value="${user._id}">`)
             logged();
 
         }).fail(function (err) {
@@ -27,7 +28,7 @@ $(document).ready(function(){
         }
     }
 
-    function logged (){
+    function logged (response){
         $.ajax({
             method: "GET",
             url: "http://localhost:3000/menu",

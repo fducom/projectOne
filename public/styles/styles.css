@@ -2,6 +2,11 @@ body {
     background-color:black;    
 }
 
+.main {
+    display:grid;
+    grid-template-columns: 1fr 2fr
+}
+
 div.gallery {
     margin-top:50px;
     max-width:360px;
@@ -65,6 +70,14 @@ footer {
     margin-top: 1em;
 }
 
+.detail {
+    grid-column: 1;
+    color:white;
+    position: relative;
+    margin:auto;
+    padding:20px;
+}
+
 @media only screen and (max-width: 720px) {
     .responsive {
         width: 100%;
@@ -85,4 +98,8 @@ footer {
     img {
         width:100%
     }
+    .main{
+        display: block;
+    }
+    
 }
