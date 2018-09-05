@@ -3,7 +3,7 @@ We decided to solve a Entry level web developer job challange. Here is the premi
     Functional requirements:
 
     - Logging with company mail.
-    
+
     - Manage information of employees (3 types: admin, cashier and chef).
 
     Roles:
@@ -35,7 +35,7 @@ We decided to solve a Entry level web developer job challange. Here is the premi
 ## 1: Express API
 We hard coded our API, which was basically our dishes. To do that, first we coded our Dishes Schema:
 
-    ``` javascript
+``` javascript
 
     const orderSchema = new Schema({
         _user: {
@@ -50,9 +50,9 @@ We hard coded our API, which was basically our dishes. To do that, first we code
         totalPrice: Number
     });
 
-    ```
+```
 
-    ``` javascript
+``` javascript
 
     const dishSchema = new Schema({
         name: String,
@@ -62,7 +62,7 @@ We hard coded our API, which was basically our dishes. To do that, first we code
         image: String
     });
 
-    ```
+```
 We then proceeded to write our seed.js. We took the dishes from Bento sushi restaurant.
 
 ## 2: CRUD
