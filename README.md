@@ -1,4 +1,4 @@
-#Restaurant App
+# Restaurant App
 We decided to solve a Entry level web developer job challange. The main advantage of this app is that it is not heavily reliant on a external API. Here is the premise:
 
     Functional requirements:
