@@ -144,7 +144,8 @@ function verifyToken(req, res, next) {
 app.get("/api/orders", (req,res) =>{
     db.Order.find()
         // populate fills in the dishes id with all the dishes data
-        .populate('dishes')
+        .populate("dishes")
+        .populate("_user")
         .exec(function(err, orders){
             if (err) { console.log("index error: " + err); }
             res.json({data:orders});

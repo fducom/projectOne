@@ -16,7 +16,8 @@ $(document).ready(function(){
             user = { email: response.email, _id: response._id }
             console.log("you can access variable user: " , user)
             $('#adminName').text(`Logged as: ${ response.email || response.result.email}`)
-            $("#adminName").append(`<input type="hidden" name="_user.email" value="${user._id}">`)
+            $(".Foodlist").append(`<input type="hidden" name="_user" value="${user._id}">`)
+            console.log(user._id)
             logged();
 
         }).fail(function (err) {

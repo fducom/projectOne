@@ -45,8 +45,9 @@ $(document).ready(function(){
             url: 'http://localhost:3000/api/orders',  
             success: function (json){
                 for(let i = 0; i < json.data.length ; i++){
+                    // console.log(json.data[i]._user.email)
                     $("#ControlList").append(   `<div class="Ord" id="number${i}" style="border-bottom: 10px solid black;">
-                                                    Order number: ${i} // by: ${json.data[i]._user} //Created at: ${json.data[i].createdAt}
+                                                    Order number: ${i} || by: ${json.data[i]._user.email} || Created at: ${json.data[i].createdAt}
                                                     <div id="order-${i}"></div>
                                                 </div>`);
                     for(let j = 0; j < json.data[i].dishes.length ;j++){
