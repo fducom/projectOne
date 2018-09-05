@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const db = require('../models');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 router.post('/signup', (req, res) => {
     console.log(req.body);
@@ -45,7 +46,7 @@ router.post('/signup', (req, res) => {
                 result = result[0]
                 jwt.sign(
                     {result},
-                    "waffles",
+                    process.env.DB_SALT,
                     (err, signedJwt) => {
                     res.status(200).json({
                     message: 'User Created',
@@ -102,7 +103,7 @@ router.post('/login', (req, res) => {
                     isAdmin: users[0].isAdmin
                 }, 
                 // add our super secret key (which should be hidden, not plaintext like this)
-                "waffles",
+                process.env.DB_SALT,
                 // these are options, not necessary
                 {
                     // its good practice to have an expiration amount for jwt tokens.
