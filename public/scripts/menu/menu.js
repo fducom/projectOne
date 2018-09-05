@@ -88,13 +88,13 @@ $(document).ready(function(){
             let array = $("input[name='price']");
             var total_array = [];
             for(let i = 0; i < array.length ; i++){
-                total_array.push(parseInt(array[i].getAttribute("value")));
+                total_array.push(parseFloat(array[i].getAttribute("value")));
             }
-            var sum = 0;
+            var sum = 0.00;
             for(let j = 0; j < total_array.length;j++){
                 sum = sum + total_array[j]
             }
-            document.getElementById("showPrice").innerText = `Total Price: $${Math.round(sum * 100) / 100}`
+            document.getElementById("showPrice").innerText = `Total Price: $${Math.round(sum * 100)/100}`
             document.getElementById("TotalPrice").value = `${sum}`
             return sum;
         }

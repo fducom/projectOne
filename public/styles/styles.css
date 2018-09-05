@@ -25,11 +25,16 @@ div.gallery img {
     color:white;
     text-align:center;
 }
+
 footer {
-    font-size:20px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size:18px;
     text-align: center;
-    letter-spacing: 2px;
-    color:white;
+    color:grey;
+    padding: 1em;
 }
 
 .inputField {
@@ -42,7 +47,6 @@ footer {
 }
 
 .menu-img {
-   /* padding:10px; */
     float: right;
     width: 33.33%;
 }
@@ -77,6 +81,10 @@ footer {
     position: relative;
     margin:auto;
     padding:20px;
+}
+
+.imgs{
+    display: flex;
 }
 
 @media only screen and (max-width: 720px) {

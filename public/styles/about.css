@@ -4,15 +4,8 @@
     grid-template-rows:1fr 1fr 1fr;
     width:100%;
     color: white;
+    padding: 4em;
 }
-
-/* #about-detail img{
-    margin: 1em;
-}
-
-#about-detail p{
-    margin: 1em;
-} */
 
 #g {
     grid-column:1;
