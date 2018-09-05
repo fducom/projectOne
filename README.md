@@ -29,8 +29,10 @@
 
     one to many
         users can create multiple orders:
+        
+``` javascript
 
-    const userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
         email: { 
             type: String, 
             required: true, 
@@ -60,6 +62,9 @@
         description:String, //Customer specifications
         image: String
     });
+```
+    
+
     
 7:Git 50+
     
