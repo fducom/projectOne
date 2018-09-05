@@ -1,4 +1,5 @@
-We decided to solve a Entry level web developer job challange. Here is the premise:
+#Restaurant App
+We decided to solve a Entry level web developer job challange. The main advantage of this app is that it is not heavily reliant on a external API. Here is the premise:
 
     Functional requirements:
 
@@ -82,16 +83,16 @@ Users can order once they are logged in. When they click on menu, the name, pric
 ```
 
 ## 3:AJAX
-Most of the AJAX request were directed to our database to fill our menu as well as the Admin page. The Admin is able to track orders, see user who order it, check whether is completed or not and delete the completed orders.
+Most of the AJAX request were directed to our database to fill our menu as well as the Admin page. The Admin is able to track orders, see the cash flow, see user who order it, check whether is completed or not and delete the completed orders.
 
 ## 4:jQuery
-Hover animation
+Used mainly for DOM Manipulation. Appending images and hidden inputs for our back-end. That way, req.body can grab names and values.
     
 ## 5:Authentication
 Following the instructions from our challange, We decided to create a users schema for our Admin (merged chef and admin functionality) and clients roles.
     
 ## 6:MongoDB
-one to many -> order to dishes, one to many users can create multiple orders:
+As mentioned before, we used a one to many association on order to dishes. Also, an order only belongs to a user and it is unique.
     
 ## 7:Visual Design
 Implemented features like: CSS grid, Bootstrap Navbar, Carousel, Font-awesome icons, on-hover effects and responsive design(ish)
