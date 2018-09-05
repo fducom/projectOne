@@ -1,5 +1,10 @@
 .wrapper{
     text-align: center;
+    background-color: grey;
+}
+
+#message{
+    color:white;
 }
 
 

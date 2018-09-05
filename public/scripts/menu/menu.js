@@ -28,7 +28,7 @@ $(document).ready(function(){
         }
     }
 
-    function logged (response){
+    function logged (){
         $.ajax({
             method: "GET",
             url: "http://localhost:3000/menu",
