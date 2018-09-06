@@ -149,8 +149,8 @@ As mentioned before, we used a one to many association on order to dishes. Also,
 ## 7:Visual Design
 Implemented features like: CSS grid, Bootstrap Navbar, Carousel, Font-awesome icons, on-hover effects and responsive design(ish)
 
-![Alt text](./githubimgs/Screen Shot 2018-09-05 at 11.52.08 PM.png)
-![Alt text](./githubimgs/Screen Shot 2018-09-05 at 11.52.36 PM.png)
-![Alt text](./githubimgs/Screen Shot 2018-09-05 at 11.53.12 PM.png)
-![Alt text](./githubimgs/Screen Shot 2018-09-05 at 11.53.34 PM.png)
-![Alt text](./githubimgs/Screen Shot 2018-09-05 at 11.55.30 PM.png)
+![Alt text](/./githubimgs/Screen Shot 2018-09-05 at 11.52.08 PM.png)
+![Alt text](/./githubimgs/Screen Shot 2018-09-05 at 11.52.36 PM.png)
+![Alt text](/./githubimgs/Screen Shot 2018-09-05 at 11.53.12 PM.png)
+![Alt text](/./githubimgs/Screen Shot 2018-09-05 at 11.53.34 PM.png)
+![Alt text](/./githubimgs/Screen Shot 2018-09-05 at 11.55.30 PM.png)
