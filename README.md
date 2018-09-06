@@ -83,7 +83,7 @@ Users can order once they are logged in. When they click on menu, the name, pric
 ```
 
 ## 3:AJAX
-Most of the AJAX request were directed to our database to fill our menu as well as the Admin page. The Admin is able to track orders, see the cash flow, see user who order it, check whether is completed or not and delete the completed orders.
+Most of the AJAX request were directed to our database to fill our menu (which is the function below) as well as the Admin page. Don't let this huge function surprise you, what is mostly doing is just appending html code when ajax is successfuly executed. The Admin is able to track orders, see the cash flow, see user who order it, check whether is completed or not and delete the completed orders.
 
 ``` javascript
 
@@ -148,3 +148,9 @@ As mentioned before, we used a one to many association on order to dishes. Also,
     
 ## 7:Visual Design
 Implemented features like: CSS grid, Bootstrap Navbar, Carousel, Font-awesome icons, on-hover effects and responsive design(ish)
+
+![alt text](../githubimgs/Screen Shot 2018-09-05 at 11.52.08 PM.png)
+![alt text](../githubimgs/Screen Shot 2018-09-05 at 11.52.36 PM.png)
+![alt text](../githubimgs/Screen Shot 2018-09-05 at 11.53.12 PM.png)
+![alt text](../githubimgs/Screen Shot 2018-09-05 at 11.53.34 PM.png)
+![alt text](../githubimgs/Screen Shot 2018-09-05 at 11.55.30 PM.png)
