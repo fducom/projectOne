@@ -1,0 +1,30 @@
+.wrapper{
+    text-align: center;
+    background-color: grey;
+}
+
+#message{
+    color:white;
+}
+
+
+form {
+    color:gray;
+    display:inline-block;    
+    width:300px;
+}
+
+.wrap {
+    display: block;
+    text-align: center;
+    margin:50px 0;
+}
+
+input {
+    float: right;
+    margin:0 20px;
+}
+
+#signupForm {
+    border-left:1px solid white;
+}

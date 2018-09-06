@@ -1,0 +1,23 @@
+.contain{
+    text-align: center;
+    margin: auto;
+}
+.resize{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 1em;
+}
+
+.resize img{
+    width: 30%;
+    height: 20%;
+    border-radius: 20px;
+    
+}
+
+.card{
+    width: 50%;
+    height: 20%;
+    background-color: grey;
+}

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/todo-app', { useNewUrlParser: true } )
-
+mongoose.connect('mongodb://localhost/projectOne', { useNewUrlParser: true } )
 
 const Dish = require('./dishes');
 const Order = require("./orders");
@@ -11,3 +10,5 @@ module.exports ={
     Order: Order,
     Dish: Dish
 }
+
+module.exports.User = require('./user')

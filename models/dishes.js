@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Dish', 
-    new mongoose.Schema({
-        name: String,
-        completed: Boolean,
-        price: Number,
-        description:String, //Customer specifications
-    })
-);
+const dishSchema = new Schema({
+    name: String,
+    completed: Boolean,
+    price: Number,
+    description:String, //Customer specifications
+    image: String
+});
+
+const Dish = mongoose.model('Dish', dishSchema);
+
+module.exports = Dish;
