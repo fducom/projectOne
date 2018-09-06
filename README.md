@@ -85,6 +85,58 @@ Users can order once they are logged in. When they click on menu, the name, pric
 ## 3:AJAX
 Most of the AJAX request were directed to our database to fill our menu as well as the Admin page. The Admin is able to track orders, see the cash flow, see user who order it, check whether is completed or not and delete the completed orders.
 
+``` javascript
+
+    function getOrders(){
+            $.ajax({
+                method: "GET",
+                url: 'http://localhost:3000/api/orders',  
+                success: function (json){
+                    for(let i = 0; i < json.data.length ; i++){
+                        $("#ControlList").append(   `<div class="Ord" id="number${i}" style="border-bottom: 10px solid black;">
+                                                        Order number: ${i} || by: ${json.data[i]._user.email} || Created at: ${json.data[i].createdAt}
+                                                        <div id="order-${i}"></div>
+                                                    </div>`);
+                        for(let j = 0; j < json.data[i].dishes.length ;j++){
+                            $(`#order-${i}`).append(`<li>${json.data[i].dishes[j].name}</li>`);
+                        }
+                        $(`#number${i}`).append(`Total price: $${json.data[i]                             .totalPrice} ||
+                                                Payment: ${json.data[i].paymentMethod} || 
+                                                <input value="${json.data[i]._id}" type='hidden'>
+                                                <label for="status">Completed:</label> 
+                                                <input type="checkbox" id="status" value="status"> ||
+                                                <button class="del" disabled> Delete</button>`);
+                    }
+                
+                    $("[type=checkbox]").click(function() {
+                        $(this).siblings("button").attr("disabled", !this.checked);
+                    });
+                    
+                $("#ControlList").children("div").on("click", ".del", function(e){
+                    e.preventDefault();
+                    let delOrderId = $(this).siblings("input").attr("value");
+                    //AJAX request to delete an existing order
+                    $.ajax({
+                        method: "DELETE",
+                        url: `http://localhost:3000/api/orders/${delOrderId}`,
+                        success: function(){
+                            $(this).parent().remove();
+                            location.reload();
+                        },
+                        error: function(){
+        
+                        }
+                    });
+                });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        }
+
+```
+
 ## 4:jQuery
 Used mainly for DOM Manipulation. Appending images and hidden inputs for our back-end. That way, req.body can grab names and values.
     
