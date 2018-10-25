@@ -91,7 +91,7 @@ app.delete('/api/dishes/:id', (req, res) => {
 ///////////////////
     
 app.post('/verify', verifyToken, (req, res) => {
-    let verified= jwt.verify(req.token, 'waffles')
+    let verified= jwt.verify(req.token, process.env.DB_SALT)
     console.log("verified: ", verified)
     res.json(verified)
 }) 
@@ -99,7 +99,7 @@ app.post('/verify', verifyToken, (req, res) => {
 //Protected admin route
 app.get('/admin', verifyToken, (req, res) => {
     console.log(req.token)
-    jwt.verify(req.headers.token, 'waffles', (err, authData) => {
+    jwt.verify(req.headers.token, process.env.DB_SALT, (err, authData) => {
         if(err) {
             console.log(req.token)
             res.sendStatus(403);

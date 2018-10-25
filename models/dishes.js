@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+Schema = mongoose.Schema;
 
 const dishSchema = new Schema({
     name: String,
